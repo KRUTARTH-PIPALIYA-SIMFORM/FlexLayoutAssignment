@@ -1,62 +1,73 @@
 *{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
     text-align: center;
-    margin: 0.1rem;
-    padding: 0;
-    border-radius: 0.1rem;
 }
-
 body{
     height: 100vh;
-    flex-direction: column;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+    "header header header header"
+    "sidebar main main main"
+    "sidebar content1 content2 content3"
+    "sidebar footer footer footer";
+    grid-template-rows: 
+    1fr
+    5fr
+    3fr
+    2fr;
+    gap: 0.1rem;
 }
-
 header{
-    background-color:aqua;
-    flex-grow: 1;
+    grid-area: header;
+    background-color: aquamarine;
 }
-
-#mainDiv{
-    display: flex;
-    flex-grow: 8;
-}
-
-#wrapperDiv{
-    flex-grow: 3;
-    display: flex;
-    flex-direction: column;
-}
-
-main{
-    background-color: blueviolet;
-    flex-grow: 4;
-}
-
-#contentWrapper{
-    display: flex;
-    flex-grow: 2;
-}
-
-.content{
-    background-color: blue;
-    flex-grow: 1;
-}
-
 aside{
-    background-color: cadetblue;
-    flex-grow: 1;
+    grid-area: sidebar;
+    background-color: bisque;
 }
-
+main{
+    grid-area: main;
+    background-color: blueviolet;
+}
 footer{
-    background-color: cornflowerblue;
-    flex-grow: 1;
+    grid-area: footer;
+    background-color: cadetblue;
+}
+.content{
+    background-color: aqua;
+}
+#c1{
+    grid-area: content1;
+}
+#c2{
+    grid-area: content2;
+}
+#c3{
+    grid-area: content3;
 }
 
-@media (max-width:500px){
-    #mainDiv{
-       flex-direction: column;
-    }
-    #contentWrapper{
-        flex-direction: column;
+@media (max-width:500px) {
+    body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 
+        1fr
+        1fr
+        3fr
+        2fr
+        2fr
+        2fr
+        1fr;
+
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "content1"
+            "content2"
+            "content3"
+            "footer";
     }
 }
